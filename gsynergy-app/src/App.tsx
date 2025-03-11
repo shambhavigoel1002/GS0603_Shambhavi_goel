@@ -1,21 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
 import LoginPage from "./pages/Login";
-import DashboardPage from "./pages/Dashboard"; // Assuming you have a Dashboard component
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <Routes>
-            {/* Define your routes */}
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
-          </Routes>
-        </header>
-      </div>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/stores" element={<Dashboard />} />
+          <Route path="/skus" element={<div>SKUs Page</div>} />
+          <Route path="/planning" element={<div>Planning Page</div>} />
+          <Route path="/charts" element={<div>Charts Page</div>} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

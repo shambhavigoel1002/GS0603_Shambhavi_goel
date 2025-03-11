@@ -1,99 +1,111 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../store/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 import {
+  Box,
   Button,
   TextField,
-  Card,
-  CardContent,
-  Box,
-  InputAdornment,
   Typography,
+  Paper,
+  Grid,
+  InputAdornment,
 } from "@mui/material";
 import { LockOutlined, MailOutline } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
-
-const loginSchema = z.object({
-  email: z.string().email("Invalid email"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
-
-type LoginFormValues = z.infer<typeof loginSchema>;
 
 const LoginPage: React.FC = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginFormValues>({
-    resolver: zodResolver(loginSchema),
-  });
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (data: LoginFormValues) => {
-    // Handle login logic here
-    console.log("Login data:", data);
-    navigate("/dashboard"); // Redirect on success
+  const handleLogin = (e?: React.FormEvent<HTMLFormElement>) => {
+    // Prevent default form behavior
+    if (e) {
+      e.preventDefault();
+    }
+
+    // Simple validation
+    if (username.trim() === "" || password.trim() === "") {
+      setError("Username and password are required.");
+      return;
+    }
+
+    // Clear error and proceed with login
+    setError("");
+    dispatch(login(username));
+    navigate("/dashboard");
   };
 
   return (
-    <Box
-      display="flex"
+    <Grid
+      container
       justifyContent="center"
       alignItems="center"
-      height="100vh"
-      bgcolor="gray.100"
+      style={{ height: "100vh" }}
     >
-      <Card sx={{ width: "100%", maxWidth: 400, p: 4 }}>
-        <CardContent>
+      <Grid item xs={12} md={6} lg={4}>
+        <Paper elevation={3} sx={{ padding: 4 }}>
           <Typography variant="h4" align="center" gutterBottom>
             Login
           </Typography>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Box mb={3}>
-              <TextField
-                {...register("email")}
-                label="Email"
-                fullWidth
-                variant="outlined"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <MailOutline />
-                    </InputAdornment>
-                  ),
-                }}
-                error={!!errors.email}
-                helperText={errors.email?.message}
-              />
-            </Box>
-            <Box mb={3}>
-              <TextField
-                {...register("password")}
-                label="Password"
-                type="password"
-                fullWidth
-                variant="outlined"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockOutlined />
-                    </InputAdornment>
-                  ),
-                }}
-                error={!!errors.password}
-                helperText={errors.password?.message}
-              />
-            </Box>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
+          {/* Wrap the form with <form> tag to capture Enter key */}
+          <Box
+            component="form"
+            noValidate
+            autoComplete="off"
+            onSubmit={handleLogin}
+          >
+            <TextField
+              label="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              fullWidth
+              margin="normal"
+              variant="outlined"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <MailOutline />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+              margin="normal"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <LockOutlined />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {error && (
+              <Typography variant="body2" color="error" align="center">
+                {error}
+              </Typography>
+            )}
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mt: 2, mb: 2 }}
+              onClick={() => handleLogin()}
+              type="submit"
+            >
               Login Data Viewer
             </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </Box>
+          </Box>
+        </Paper>
+      </Grid>
+    </Grid>
   );
 };
 
