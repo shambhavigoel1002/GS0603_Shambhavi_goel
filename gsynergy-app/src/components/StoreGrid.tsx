@@ -6,7 +6,8 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { ClientSideRowModelModule, ColDef } from "ag-grid-community";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-
+import GridItem from "./GridItem/GridItem";
+import "./GridItem/AgGrid.css";
 const StoreGrid = () => {
   interface RowData {
     "S.No": number;
@@ -32,14 +33,14 @@ const StoreGrid = () => {
       headerName: "",
       field: "drag",
       width: 60,
-      cellRenderer: () => <DragIndicatorIcon />,
+      cellRenderer: () => <DragIndicatorIcon />
     },
     {
       headerName: "S.No",
       field: "S.No",
       sortable: true,
       filter: true,
-      width: 80,
+      width: 80
     },
     {
       headerName: "Store",
@@ -47,7 +48,7 @@ const StoreGrid = () => {
       sortable: true,
       filter: true,
       editable: true,
-      flex: 1,
+      flex: 1
     },
     {
       headerName: "City",
@@ -55,7 +56,7 @@ const StoreGrid = () => {
       sortable: true,
       filter: true,
       editable: true,
-      flex: 1,
+      flex: 1
     },
     {
       headerName: "State",
@@ -63,7 +64,7 @@ const StoreGrid = () => {
       sortable: true,
       filter: true,
       editable: true,
-      flex: 1,
+      flex: 1
     },
     {
       headerName: "",
@@ -74,8 +75,8 @@ const StoreGrid = () => {
           style={{ cursor: "pointer", color: "red" }}
           onClick={() => onRemove(params)}
         />
-      ),
-    },
+      )
+    }
   ];
 
   // Load and parse the Excel file on component mount
@@ -96,6 +97,13 @@ const StoreGrid = () => {
     const newData = rowData.filter((row) => row !== params.data);
     setRowData(newData);
   };
+  const [gridApi, setGridApi] = useState(null);
+
+  const RowSelectionType = "single";
+
+  function onGridReady(params: { api: any; columnApi: any }) {
+    setGridApi(params.api);
+  }
 
   return (
     <div>
@@ -103,14 +111,25 @@ const StoreGrid = () => {
         className="ag-theme-alpine"
         style={{ height: "500px", width: "100%", padding: "20px" }}
       >
-        <AgGridReact
+        <GridItem
+          onGridReady={onGridReady}
+          rowData={rowData}
+          rowSelection={RowSelectionType}
+          columnDefs={columnDefs}
+          pagination={false}
+          rowDragManaged={true} // Enable row reordering
+          animateRows={true}
+          modules={[ClientSideRowModelModule]}
+          suppressMovableColumns={true}
+        />
+        {/* <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
           rowDragManaged={true} // Enable row reordering
           animateRows={true}
           modules={[ClientSideRowModelModule]}
           suppressMovableColumns={true} // Prevent column dragging
-        />
+        /> */}
       </div>
       <button
         style={{
@@ -120,7 +139,7 @@ const StoreGrid = () => {
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
-          marginTop: "20px",
+          marginTop: "20px"
         }}
       >
         New Store
