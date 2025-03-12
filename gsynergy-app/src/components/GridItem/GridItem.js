@@ -2,17 +2,23 @@ import React, { ReactElement, FC, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import { MenuItem, Select, Typography, Pagination } from "@mui/material";
+import {
+  MenuItem,
+  Select,
+  Typography,
+  Pagination,
+  Button,
+} from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ClientSideRowModelModule } from "ag-grid-community";
-
+import "./AgGrid.css";
 const theme = createTheme({
   palette: {
     primary: {
       main: "#0075ff",
-      contrastText: "#FFFFFF"
-    }
-  }
+      contrastText: "#FFFFFF",
+    },
+  },
 });
 const rowHeight = 40;
 
@@ -40,7 +46,6 @@ const GridItem = (props) => {
           : "ag-theme-alpine grid-container"
       }
     >
-      fgbfgv fgb gf cfgv bf
       <AgGridReact
         ref={props.gridRef}
         rowHeight={rowHeight}
@@ -67,7 +72,11 @@ const GridItem = (props) => {
         rowDragManaged={props.rowDragManaged}
         animateRows={props.animateRows}
         suppressMovableColumns={props.suppressMovableColumns}
+        domLayout="autoHeight"
+        onCellValueChanged={props.onCellValueChanged}
+        onRowDragEnd={props.onRowDragEnd}
       />
+      <Button>fdg</Button>
       {props.pagination != false && (
         <ThemeProvider theme={theme}>
           <Pagination

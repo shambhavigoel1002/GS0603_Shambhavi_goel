@@ -35,7 +35,7 @@ const LoginPage: React.FC = () => {
     // Clear error and proceed with login
     setError("");
     dispatch(login(username));
-    navigate("/dashboard");
+    navigate("/stores");
   };
 
   return (

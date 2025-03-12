@@ -17,7 +17,7 @@ import {
 import GridItem from "./GridItem/GridItem";
 import "./GridItem/AgGrid.css";
 
-const StoreGrid = () => {
+const SkuGrid = () => {
   interface RowData {
     "Seq No."?: number;
     Label?: string;
@@ -70,8 +70,8 @@ const StoreGrid = () => {
       ),
     },
     {
-      headerName: "S.No",
-      field: "Seq No.",
+      headerName: "Id",
+      field: "ID",
       sortable: true,
       filter: true,
       width: 80,
@@ -86,16 +86,16 @@ const StoreGrid = () => {
       flex: 1,
     },
     {
-      headerName: "City",
-      field: "City",
+      headerName: "Price",
+      field: "Price",
       sortable: true,
       filter: true,
       editable: true,
       flex: 1,
     },
     {
-      headerName: "State",
-      field: "State",
+      headerName: "Cost",
+      field: "Cost",
       sortable: true,
       filter: true,
       editable: true,
@@ -109,7 +109,7 @@ const StoreGrid = () => {
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: "array" });
-        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        const firstSheet = workbook.Sheets[workbook.SheetNames[1]];
         const jsonData = XLSX.utils.sheet_to_json<RowData>(firstSheet);
         setRowData(jsonData);
       })
@@ -139,6 +139,8 @@ const StoreGrid = () => {
       Label: newStore.Label,
       City: newStore.City,
       State: newStore.State,
+      Price: newStore.Price || 0,
+      Cost: newStore.Cost || 0,
     };
 
     setRowData([...rowData, storeToAdd]);
@@ -148,6 +150,8 @@ const StoreGrid = () => {
       Label: "",
       City: "",
       State: "",
+      Price: 0,
+      Cost: 0,
     });
   };
 
@@ -204,21 +208,22 @@ const StoreGrid = () => {
         />
       </div>
 
-      <Button
-        startIcon={<AddIcon />}
-        style={{
-          backgroundColor: "#f97316",
-          color: "white",
-          padding: "10px 20px",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          marginTop: "350px",
-        }}
-        onClick={() => setAddDialogOpen(true)}
-      >
-        New Store
-      </Button>
+      <div style={{ textAlign: "right", marginTop: "20px" }}>
+        <Button
+          startIcon={<AddIcon />}
+          style={{
+            backgroundColor: "#f97316",
+            color: "white",
+            padding: "10px 20px",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() => setAddDialogOpen(true)}
+        >
+          New SKU
+        </Button>
+      </div>
 
       {/* Add Store Dialog */}
       <Dialog open={addDialogOpen} onClose={() => setAddDialogOpen(false)}>
@@ -253,6 +258,28 @@ const StoreGrid = () => {
               setNewStore({ ...newStore, State: e.target.value })
             }
           />
+          <TextField
+            margin="dense"
+            label="Price"
+            fullWidth
+            variant="outlined"
+            type="number"
+            value={newStore.Price}
+            onChange={(e) =>
+              setNewStore({ ...newStore, Price: parseFloat(e.target.value) })
+            }
+          />
+          <TextField
+            margin="dense"
+            label="Cost"
+            fullWidth
+            variant="outlined"
+            type="number"
+            value={newStore.Cost}
+            onChange={(e) =>
+              setNewStore({ ...newStore, Cost: parseFloat(e.target.value) })
+            }
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setAddDialogOpen(false)} color="primary">
@@ -271,4 +298,4 @@ const StoreGrid = () => {
   );
 };
 
-export default StoreGrid;
+export default SkuGrid;
