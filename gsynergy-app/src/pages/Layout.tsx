@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Toolbar } from "@mui/material";
+import { Box, Toolbar, Typography } from "@mui/material";
 import TopBar from "../components/TopBar";
 import SideMenu from "../components/SideMenu";
 
@@ -21,11 +21,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            height: "100%",
+            height: "100%"
           }}
         >
           <Toolbar />
-          Data Viewer App
+          <Typography variant="h4" gutterBottom>
+            Data Viewer App
+          </Typography>
           {children}
         </div>
       </Box>

@@ -7,18 +7,23 @@ import {
   Select,
   Typography,
   Pagination,
-  Button,
+  Button
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { ClientSideRowModelModule } from "ag-grid-community";
+import { provideGlobalGridOptions } from "ag-grid-community";
 import "./AgGrid.css";
+import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
+ModuleRegistry.registerModules([AllCommunityModule]);
+// ModuleRegistry.registerModules([AllEnterpriseModule]);
+provideGlobalGridOptions({ theme: "legacy" });
 const theme = createTheme({
   palette: {
     primary: {
       main: "#0075ff",
-      contrastText: "#FFFFFF",
-    },
-  },
+      contrastText: "#FFFFFF"
+    }
+  }
 });
 const rowHeight = 40;
 
