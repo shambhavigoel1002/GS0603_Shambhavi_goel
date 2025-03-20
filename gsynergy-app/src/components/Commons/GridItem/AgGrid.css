@@ -1,9 +1,9 @@
 .ag-theme-alpine {
   --ag-header-height: 30px;
-  --ag-header-foreground-color: black;
-  --ag-header-background-color: #0075ff;
-  --ag-header-cell-hover-background-color: rgb(80, 40, 140);
-  --ag-header-cell-moving-background-color: rgb(80, 40, 140);
+  --ag-header-foreground-color:rgba(0, 0, 0, 0.54);
+  --ag-header-background-color: #2f8a9c;
+  --ag-header-cell-hover-background-color: #dfe5ff;
+  --ag-header-cell-moving-background-color: #dfe5ff;
   --ag-borders: solid 1px;
   --ag-borders-row: solid 1px;
   --ag-border-color: #dfe5ff;
@@ -12,8 +12,8 @@
   border-radius: 10px;
 } */
 .ag-theme-alpine .ag-header-row {
-  /* height: 42px !important; */
-  /* top: 10px; */
+  height: 42px !important;
+  top: 10px;
 }
 .ag-theme-alpine .ag-row {
   border: none;
@@ -36,7 +36,7 @@
 }
 
 .ag-text-field-input {
-  color: black !important;
+  color:  rgba(0, 0, 0, 0.54) !important;
 }
 
 .ag-theme-alpine .ag-cell {
@@ -55,6 +55,6 @@
   /* font-weight: lighter !important; */
 }
 .ag-header-cell-label {
-  color: White;
+  color:#ffffff;
   font-weight: bolder;
 }

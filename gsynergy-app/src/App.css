@@ -54,10 +54,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   height: 64px;
-  background-color: #1976d2;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(102, 88, 88);
   z-index: 1200; /* Ensure top bar is above the sidebar */
   display: flex;
   align-items: center;
@@ -67,7 +67,10 @@
 
 /* Dashboard Content */
 .content {
-  margin-left: 250px; /* Same width as sidebar */
+  margin-left: 50px; /* Same width as sidebar */
   padding-top: 64px; /* Same height as topbar */
   padding: 20px;
+}
+.side-menu-list{
+  color: rgba(0, 0, 0, 0.54);
 }

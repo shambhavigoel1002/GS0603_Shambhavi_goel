@@ -10,7 +10,10 @@ import {
 } from "@mui/material";
 import { Store, Inventory, EventNote, ShowChart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
+import StoreIcon from "@mui/icons-material/Store";
+import CategoryIcon from "@mui/icons-material/Category";
+import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
+import InsertChartIcon from "@mui/icons-material/InsertChart";
 const drawerWidth = 240;
 const collapsedDrawerWidth = 60;
 
@@ -44,27 +47,35 @@ const SideMenu: React.FC = () => {
       <List>
         <ListItem component={Link} to="/stores">
           <ListItemIcon>
-            <Store />
+            <StoreIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Stores" />}
+          {drawerOpen && (
+            <ListItemText primary="Stores" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/skus">
           <ListItemIcon>
-            <Inventory />
+            <CategoryIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="SKUs" />}
+          {drawerOpen && (
+            <ListItemText primary="SKUs" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/planning">
           <ListItemIcon>
-            <EventNote />
+            <CalendarViewMonthIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Planning" />}
+          {drawerOpen && (
+            <ListItemText primary="Planning" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/charts">
           <ListItemIcon>
-            <ShowChart />
+            <InsertChartIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Charts" />}
+          {drawerOpen && (
+            <ListItemText primary="Charts" className="side-menu-list" />
+          )}
         </ListItem>
       </List>
     </Drawer>

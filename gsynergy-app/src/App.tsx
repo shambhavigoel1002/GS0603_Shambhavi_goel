@@ -1,9 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
+import StoreGrid from "./pages/StoreGrid";
+import SkuGrid from "./pages/SkuGrid";
+import Layout from "./pages/Layout";
+import PlanningGrid from "./components/PlanningGrid";
+import DualChartPage from "./pages/DualChartPage";
 
 function App() {
   return (
@@ -11,11 +15,38 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/stores" element={<Dashboard />} />
-          <Route path="/skus" element={<div>SKUs Page</div>} />
-          <Route path="/planning" element={<div>Planning Page</div>} />
-          <Route path="/charts" element={<div>Charts Page</div>} />
+          <Route
+            path="/stores"
+            element={
+              <Layout>
+                <StoreGrid />
+              </Layout>
+            }
+          />
+          <Route
+            path="/skus"
+            element={
+              <Layout>
+                <SkuGrid />
+              </Layout>
+            }
+          />
+          <Route
+            path="/planning"
+            element={
+              <Layout>
+                <PlanningGrid />
+              </Layout>
+            }
+          />
+          <Route
+            path="/charts"
+            element={
+              <Layout>
+                <DualChartPage />
+              </Layout>
+            }
+          />
         </Route>
       </Routes>
     </Router>
