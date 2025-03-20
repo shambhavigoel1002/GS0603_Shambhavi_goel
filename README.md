@@ -109,7 +109,6 @@ Here are key elements of my implementation that demonstrate my proficiency:
 5. **Testing Strategy**: I implemented a comprehensive testing strategy using vitest which demonstrates my commitment to code quality and reliability.
 
 ## Future Improvements
-With an additional 4 hours, I would implement the following improvements:
 
 1. **Performance Optimization**: I would optimize the rendering performance of the grid component by . This would improve the user experience when handling large datasets.
 
@@ -122,9 +121,9 @@ With an additional 4 hours, I would implement the following improvements:
 5. **Additional Unit and Integration Tests**: I would increase test coverage to ensure robustness.
 
 ## Demo
-A live deployment of the application can be found at:
+A live deployment of the application can be found at:https://gs-0603-shambhavi-goel-zbvq.vercel.app/
 
-A video demonstration of the application's functionality can be viewed at: [Your Video URL]
- Demo credentials for authentication:
+A video demonstration of the application's functionality can be viewed at: https://jam.dev/c/9d57f77e-fe46-416f-9c4d-1484786623f8
+Demo credentials for authentication:
 - Username: admin@gmail.com
 - Password: admin
