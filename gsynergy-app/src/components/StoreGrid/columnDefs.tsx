@@ -47,14 +47,6 @@ export const createColumnDefs = (
     ),
   },
   {
-    headerName: "S.No",
-    field: "Sno",
-    sortable: true,
-    filter: true,
-    flex: 1,
-    editable: false,
-  },
-  {
     headerName: "Store",
     field: "Label",
     sortable: true,
