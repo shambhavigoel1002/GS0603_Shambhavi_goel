@@ -221,9 +221,9 @@ const LoginPage: React.FC = () => {
             >
               {isLoading ? <CircularProgress size={24} /> : "Login"}
             </Button>
-            <Typography variant="body2" align="center" color="textSecondary">
+            {/* <Typography variant="body2" align="center" color="textSecondary">
               Use email: admin@gmail.com / password: admin
-            </Typography>
+            </Typography> */}
           </Box>
         </Paper>
       </Grid>

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Box, Toolbar, Typography } from "@mui/material";
 import TopBar from "../components/TopBar";
-import SideMenu from "../components/SideMenu";
+import SideMenu from "../components/SideMenu/SideMenu";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -22,7 +22,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            color: "rgba(0, 0, 0, 0.54)",
+            color: "rgba(0, 0, 0, 0.54)"
           }}
         >
           <Typography variant="h4">Data Viewer App</Typography>
