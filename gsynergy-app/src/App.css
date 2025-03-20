@@ -71,63 +71,6 @@
   padding-top: 64px; /* Same height as topbar */
   padding: 20px;
 }
-.ag-theme-alpine {
-  --ag-header-height: 30px;
-  --ag-header-foreground-color: black;
-  --ag-header-background-color: #0075ff;
-  --ag-header-cell-hover-background-color: rgb(80, 40, 140);
-  --ag-header-cell-moving-background-color: rgb(80, 40, 140);
-  --ag-borders: solid 1px;
-  --ag-borders-row: solid 1px;
-  --ag-border-color: #dfe5ff;
-}
-/* .ag-root-wrapper {
-  border-radius: 10px;
-} */
-.ag-theme-alpine .ag-header-row {
-  height: 42px !important;
-  top: 10px;
-}
-.ag-theme-alpine .ag-row {
-  border: none;
-}
-.ag-theme-alpine .ag-header-cell {
-  font-size: 5 rem;
-  font-weight: lighter;
-}
-.ag-header-cell {
-  border-right-color: #dcdcdc;
-  border-right-width: 0px;
-  border-right-style: solid;
-  height: 200;
-}
-.ag-cell {
-  /* display: inline-flex; */
-  /* align-items: center; */
-  /* justify-content: space-around; */
-  font-weight: lighter;
-}
-
-.ag-text-field-input {
-  color: black !important;
-}
-
-.ag-theme-alpine .ag-cell {
-  /* padding-left: 0px; */
-  /* padding-right: 0px; */
-  font-size: small;
-}
-.ag-theme-alpine .ag-row {
-  font-size: 0.5 rem !important;
-}
-
-.ag-header-cell-text {
-  overflow: hidden;
-  font-size: small;
-  text-overflow: ellipsis;
-  /* font-weight: lighter !important; */
-}
-.ag-header-cell-label {
-  color: rgb(19, 13, 13);
-  font-weight: bolder;
+.side-menu-list{
+  color: rgba(0, 0, 0, 0.54);
 }

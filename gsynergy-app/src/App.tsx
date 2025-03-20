@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
-import StoreGrid from "./components/StoreGrid";
-import SkuGrid from "./components/SkuGrid";
-import ChartGrid from "./components/ChartGrid";
+import StoreGrid from "./pages/StoreGrid";
+import SkuGrid from "./pages/SkuGrid";
 import Layout from "./pages/Layout";
 import PlanningGrid from "./components/PlanningGrid";
+import DualChartPage from "./pages/DualChartPage";
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
             path="/charts"
             element={
               <Layout>
-                <ChartGrid />
+                <DualChartPage />
               </Layout>
             }
           />

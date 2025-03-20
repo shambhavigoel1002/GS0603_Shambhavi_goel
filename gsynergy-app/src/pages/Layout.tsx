@@ -13,7 +13,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <Box sx={{ display: "flex" }}>
       <TopBar />
       <SideMenu />
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 2 }}>
         <div
           className="content"
           style={{
@@ -21,13 +21,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            height: "100%"
+            height: "100%",
+            color: "rgba(0, 0, 0, 0.54)",
           }}
         >
-          <Toolbar />
-          <Typography variant="h4" gutterBottom>
-            Data Viewer App
-          </Typography>
+          <Typography variant="h4">Data Viewer App</Typography>
           {children}
         </div>
       </Box>

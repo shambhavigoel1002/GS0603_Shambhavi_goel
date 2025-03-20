@@ -6,7 +6,7 @@ import { ClientSideRowModelModule } from "ag-grid-community";
 import * as XLSX from "xlsx";
 import { Box } from "@mui/material";
 
-import GridItem from "./GridItem/GridItem";
+import GridItem from "./Commons/GridItem/GridItem";
 
 interface RowData {
   store: string;
@@ -35,7 +35,7 @@ const PlanningScreen = () => {
     "Asymmetrical Hem Skirt": { price: 99.99, cost: 66.89 },
     "Sherpa Lined Denim Jacket": { price: 314.89, cost: 47.55 },
     "Diamond Stud Earrings": { price: 15.0, cost: 13.76 },
-    "Waterproof Hiking Boots": { price: 145.5, cost: 17.33 }
+    "Waterproof Hiking Boots": { price: 145.5, cost: 17.33 },
   };
 
   // Function to calculate background color based on GM percentage
@@ -53,80 +53,80 @@ const PlanningScreen = () => {
         store: "Nashville Melody Music Store",
         sku: "Rugged Utility Jacket",
         Feb_Week01_Units: 200,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Chicago Charm Boutique",
         sku: "Floral Chiffon Wrap Dress",
         Feb_Week01_Units: 200,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Miami Breeze Apparel",
         sku: "Lace-Up Combat Boots",
         Feb_Week01_Units: 199,
-        Feb_Week02_Units: 14
+        Feb_Week02_Units: 14,
       },
       {
         store: "Nashville Melody Music Store",
         sku: "Silk Embroidered Kimono",
         Feb_Week01_Units: 198,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Chicago Charm Boutique",
         sku: "Textured Knit Pullover",
         Feb_Week01_Units: 198,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Detroit Motor Gear",
         sku: "Oversized Cat-Eye Sunglasses",
         Feb_Week01_Units: 197,
-        Feb_Week02_Units: 53
+        Feb_Week02_Units: 53,
       },
       {
         store: "Phoenix Sunwear",
         sku: "Tassel Fringe Handbag",
         Feb_Week01_Units: 196,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Las Vegas Neon Treasures",
         sku: "Faux Leather Leggings",
         Feb_Week01_Units: 196,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Atlanta Outfitters",
         sku: "Sporty Zip-Up Hoodie",
         Feb_Week01_Units: 196,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Charlotte Queens Closet",
         sku: "Asymmetrical Hem Skirt",
         Feb_Week01_Units: 196,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "New York Empire Eats",
         sku: "Sherpa Lined Denim Jacket",
         Feb_Week01_Units: 195,
-        Feb_Week02_Units: 0
+        Feb_Week02_Units: 0,
       },
       {
         store: "Portland Evergreen Goods",
         sku: "Diamond Stud Earrings",
         Feb_Week01_Units: 195,
-        Feb_Week02_Units: 122
+        Feb_Week02_Units: 122,
       },
       {
         store: "Chicago Charm Boutique",
         sku: "Waterproof Hiking Boots",
         Feb_Week01_Units: 195,
-        Feb_Week02_Units: 0
-      }
+        Feb_Week02_Units: 0,
+      },
     ];
     setRowData(sampleData);
   }, []);
@@ -143,7 +143,7 @@ const PlanningScreen = () => {
         type: "numericColumn",
         width: 120,
         valueParser: (params: any): number => Number(params.newValue),
-        cellStyle: { textAlign: "right" }
+        cellStyle: { textAlign: "right" },
       },
       {
         headerName: `Sales Dollars`,
@@ -157,7 +157,7 @@ const PlanningScreen = () => {
         valueFormatter: (params: any): string =>
           params.value ? `$ ${params.value.toFixed(2)}` : "$ 0.00",
         type: "numericColumn",
-        cellStyle: { textAlign: "right" }
+        cellStyle: { textAlign: "right" },
       },
       {
         headerName: `GM Dollars`,
@@ -174,7 +174,7 @@ const PlanningScreen = () => {
         valueFormatter: (params: any): string =>
           params.value ? `$ ${params.value.toFixed(2)}` : "$ 0.00",
         type: "numericColumn",
-        cellStyle: { textAlign: "right" }
+        cellStyle: { textAlign: "right" },
       },
       {
         headerName: `GM Percent`,
@@ -197,10 +197,10 @@ const PlanningScreen = () => {
           return {
             textAlign: "right",
             backgroundColor: getGmPercentBackground(params.value),
-            color: params.value >= 10 ? "white" : "black"
+            color: params.value >= 10 ? "white" : "black",
           };
-        }
-      }
+        },
+      },
     ];
   };
 
@@ -212,14 +212,14 @@ const PlanningScreen = () => {
       children: [
         {
           headerName: "Week 01",
-          children: createWeekColumns("01", "Feb")
+          children: createWeekColumns("01", "Feb"),
         },
         {
           headerName: "Week 02",
-          children: createWeekColumns("02", "Feb")
-        }
-      ]
-    }
+          children: createWeekColumns("02", "Feb"),
+        },
+      ],
+    },
   ];
 
   const defaultColDef = {
@@ -227,7 +227,7 @@ const PlanningScreen = () => {
     resizable: true,
     filter: true,
     suppressMovable: true,
-    minWidth: 100 // Add a minimum width
+    minWidth: 100, // Add a minimum width
   };
   function onGridReady(params: { api: any; columnApi: any }) {
     setGridApi(params.api);
@@ -242,7 +242,7 @@ const PlanningScreen = () => {
     if (gridApi) {
       gridApi.refreshCells({
         rowNodes: [params.node],
-        force: true
+        force: true,
       });
     }
   };

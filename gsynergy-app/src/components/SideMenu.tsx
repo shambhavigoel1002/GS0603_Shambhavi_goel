@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Divider
+  Divider,
 } from "@mui/material";
 import { Store, Inventory, EventNote, ShowChart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -37,8 +37,8 @@ const SideMenu: React.FC = () => {
           width: drawerOpen ? drawerWidth : collapsedDrawerWidth,
           transition: "width 0.3s",
           overflowX: "hidden",
-          boxSizing: "border-box"
-        }
+          boxSizing: "border-box",
+        },
       }}
       className="sidebar"
     >
@@ -49,25 +49,33 @@ const SideMenu: React.FC = () => {
           <ListItemIcon>
             <StoreIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Stores" />}
+          {drawerOpen && (
+            <ListItemText primary="Stores" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/skus">
           <ListItemIcon>
             <CategoryIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="SKUs" />}
+          {drawerOpen && (
+            <ListItemText primary="SKUs" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/planning">
           <ListItemIcon>
             <CalendarViewMonthIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Planning" />}
+          {drawerOpen && (
+            <ListItemText primary="Planning" className="side-menu-list" />
+          )}
         </ListItem>
         <ListItem component={Link} to="/charts">
           <ListItemIcon>
             <InsertChartIcon />
           </ListItemIcon>
-          {drawerOpen && <ListItemText primary="Charts" />}
+          {drawerOpen && (
+            <ListItemText primary="Charts" className="side-menu-list" />
+          )}
         </ListItem>
       </List>
     </Drawer>
